@@ -1,0 +1,15 @@
+
+Browser support: Chrome 43+, Firefox 41+, Opera 29+ and IE10+.
+
+inject ['angular-clipboard']
+
+angular.module('MyApp', ['angular-clipboard'])
+    .controller('MyController', ['$scope', 'clipboard', function ($scope, clipboard) {
+        if (!clipboard.supported) {
+            console.log('Sorry, copy to clipboard is not supported');
+        }
+
+        $scope.clickHandlerEvent = function () {
+            clipboard.copyText('Copy this text');
+        };
+    }]);
